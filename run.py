@@ -79,7 +79,8 @@ if __name__ == "__main__":
     )
 
     # Initialize reward model
-    rm = TPORewardModel(args.reward_model, len_norm=False)  # or True if needed
+    reward_model_name = args.reward_model
+    rm = TPORewardModel(reward_model_name)
 
     # Load data
     data_path = args.data_path
@@ -104,9 +105,10 @@ if __name__ == "__main__":
 
     # Prepare output path
     model_suffix = model_name.split("/")[-1]
+    reward_suffix = reward_model_name.split("/")[-1]
     out_path = (
         f"./results/{data_name}_model_{model_suffix}_mode_{args.tpo_mode}_"
-        f"rm_{args.reward_model}_max_iters{args.max_iterations}_"
+        f"rm_{reward_suffix}_max_iters{args.max_iterations}_"
         f"sample_size{args.sample_size}_seed{args.seed}.json"
     )
 
