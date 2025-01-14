@@ -278,7 +278,6 @@ class VllmServer(EngineLM, CachedEngine):
             stop=['<|end_of_text|>', '<|eot_id|>', '<|im_end|>'],
             seed=seed,
         )
-        # print(response)
         if n > 1:
             response = [response.choices[i].message.content for i in range(n)]
         else:

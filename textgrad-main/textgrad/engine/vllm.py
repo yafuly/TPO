@@ -37,10 +37,6 @@ class ChatVLLM(EngineLM, CachedEngine):
         if cache_or_none is not None:
             return cache_or_none
 
-        # The chat template ignores the system prompt;
-        # print("+"*100)
-        # print("VLLM prompt ...")
-        # print(prompt)
         conversation = []
         if sys_prompt_arg:
             conversation = [{"role": "system", "content": sys_prompt_arg}]
