@@ -104,11 +104,11 @@ def run_test_time_training_tpo(query: str,
     tg.set_backward_engine(llm_engine, override=True)
     all_scores = {}
 
-    def _update_cache(sample_resps: list, score_db: dict):
+    def _update_cache(sample_resps: list, score_db: dict, index:int):
         # Compute scores for new responses
         sample_qas_ = [(query, resp) for resp in sample_resps]
         sample_scores_ = rm.perform_rm(sample_qas_)
-        cache_scores(score_db, sample_scores_, sample_qas_, index=-1)
+        cache_scores(score_db, sample_scores_, sample_qas_, index=index)
 
         # Flatten the cached data into (q, a, score) list
         merged = []
@@ -128,7 +128,7 @@ def run_test_time_training_tpo(query: str,
 
     # 1) Initial sampling for candidates
     init_responses = llm_engine(query, **gen_params)
-    chosen_resp_text, rej_resp_text = _update_cache(init_responses, all_scores)
+    chosen_resp_text, rej_resp_text = _update_cache(init_responses, all_scores, index=-1)
 
     # 2) Define the variable to be optimized
     response_role = ("a model response to a user query"
@@ -165,7 +165,7 @@ def run_test_time_training_tpo(query: str,
     loss_fn = tg.TextLoss(evaluation_sys_text)
 
     # 6) Start test-time training loop
-    for _ in range(max_iters):
+    for i in range(max_iters):
         optimizer.zero_grad()
 
         # 6.1) Compute textual loss
@@ -178,7 +178,7 @@ def run_test_time_training_tpo(query: str,
         new_responses = optimizer.step(**gen_params)
 
         # 6.4) Update cache with new responses, get chosen and rejected
-        chosen_resp_text, rej_resp_text = _update_cache(new_responses, all_scores)
+        chosen_resp_text, rej_resp_text = _update_cache(new_responses, all_scores, index=i)
 
         # 6.5) Update the variable's content
         response.set_value(chosen_resp_text)
