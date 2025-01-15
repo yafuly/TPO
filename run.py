@@ -2,6 +2,7 @@ import argparse
 import json
 import random
 import time
+import os
 import concurrent.futures
 
 from tqdm import tqdm
@@ -34,11 +35,12 @@ def config() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(description="Optimize a prompt for a task.")
     parser.add_argument("--data_path", type=str, help="Path to the data file (JSON).")
+    parser.add_argument("--output_path", type=str, default="./results", help="Path to the save results.")
     parser.add_argument("--reward_model", type=str, default="sfairXC/FsfairX-LLaMA3-RM-v0.1",
                         help="Identifier or path for the reward model.")
     parser.add_argument("--server_model", type=str, default="meta-llama/Llama-3.1-70B-Instruct",
                         help="Base model used for serving via an API.")
-    parser.add_argument("--ip", type=int, help="Server IP ending part (i.e. 10.140.54.{ip}).")
+    parser.add_argument("--ip", type=str, help="Server IP ending part (i.e. 10.140.54.{ip}).")
     parser.add_argument("--port", type=int, default=8000, help="Port number for the model server.")
     parser.add_argument("--tpo_mode", type=str, default="tpo",
                         help="Mode for test-time preference optimization (tpo, revision, or bon).")
@@ -65,7 +67,8 @@ if __name__ == "__main__":
     # Parse arguments
     args = config()
     assert args.tpo_mode in VALID_TPO_MODES, f"Invalid TPO mode: {args.tpo_mode}"
-
+    os.makedirs(args.output_path, exist_ok=True)
+    
     # Set random seed
     set_random(args.seed)
 
@@ -73,7 +76,7 @@ if __name__ == "__main__":
     model_name = f"server-{args.server_model}"
     llm_engine = tg.get_engine(
         model_name,
-        base_url=f"http://10.140.54.{args.ip}:{args.port}/v1",
+        base_url=f"{args.ip}:{args.port}/v1",
         api_key="token-abc123",
         max_token=args.max_tokens_all,
     )
@@ -107,7 +110,7 @@ if __name__ == "__main__":
     model_suffix = model_name.split("/")[-1]
     reward_suffix = reward_model_name.split("/")[-1]
     out_path = (
-        f"./results/{data_name}_model_{model_suffix}_mode_{args.tpo_mode}_"
+        f"{args.output_path}/{data_name}_model_{model_suffix}_mode_{args.tpo_mode}_"
         f"rm_{reward_suffix}_max_iters{args.max_iterations}_"
         f"sample_size{args.sample_size}_seed{args.seed}.json"
     )
