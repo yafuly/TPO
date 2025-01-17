@@ -74,7 +74,7 @@ Follow the steps below to set up your environment:
    pip install -r requirements.txt
    ```
 
-3. **Install TextGrad-main:**
+3. **Install TextGrad:**
    ```bash
    cd textgrad-main
    pip install -e .
@@ -85,7 +85,7 @@ Follow the steps below to set up your environment:
 
 By default, the TPO framework runs in a single-machine, single-GPU environment. The **vLLM server** is deployed using 4 GPUs in a tensor-parallel setup, and 1 GPU is utilized for generating the responses. The flow is as follows:
 
-1. **Start vLLM Serve**
+1. **Setup vLLM Server**
 
    This server hosts the model that will be optimized with TPO. To deploy the vLLM server, use the following command:
    ```bash
@@ -104,7 +104,7 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
       --data_path data/sample.json \
       --ip $IP \
       --port 8000 \
-      --server_model server-meta-llama/Llama-3.1-70B-Instruct \
+      --server_model server-allenai/Llama-3.1-Tulu-3-70B-SFT \
       --reward_model sfairXC/FsfairX-LLaMA3-RM-v0.1 \
       --tpo_mode tpo \
       --max_tokens_response 2048 \
