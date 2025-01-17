@@ -8,8 +8,8 @@ This repository contains the official code for the paper [Test-Time Preference O
 
 
 ## 🔔 News
-- **[18/01/2024]** Our code is open-sourced!
-- **[16/01/2025]** Our paper is released on arXiv: https://arxiv.org/abs/XXX.
+- **[22/01/2025]** Our code is open-source!
+- **[20/01/2025]** Our paper is released on arXiv: https://arxiv.org/abs/XXX.
 
 <!-- ## Table of Content
 
@@ -97,14 +97,14 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
 
 2. **Start TPO**
 
-   Run the following command to execute the TPO script, which runs a reward model to interac with the policy model deployed as the vLLM server:
+   Run the following command to execute the TPO script, which runs a reward model to interact with the policy model deployed as the vLLM server:
 
    ```bash
    python run.py \
       --data_path data/sample.json \
       --ip $IP \
       --port 8000 \
-      --server_model meta-llama/Llama-3.1-70B-Instruct \
+      --server_model server-meta-llama/Llama-3.1-70B-Instruct \
       --reward_model sfairXC/FsfairX-LLaMA3-RM-v0.1 \
       --tpo_mode tpo \
       --max_tokens_response 2048 \
@@ -119,7 +119,7 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
    - `data_path`: Path to the data file (JSON). Refer to `data/sample.json` for more details.
    - `ip`: Server IP address of the vLLM server, e.g., `localhost` or `127.0.0.1`.
    - `port`: Port number for the vLLM server, e.g., `8000`.
-   - `server_model`: Base model used for serving via an API, e.g., `allenai/Llama-3.1-Tulu-3-70B-SFT`.
+   - `server_model`: Base model used for serving via an API, e.g., `server-allenai/Llama-3.1-Tulu-3-70B-SFT` or `server-/mnt/models/reward_model/Llama-3.1-Tulu-3-70B-SFT`.
    - `reward_model`: Identifier or path for the reward model, e.g., `sfairXC/FsfairX-LLaMA3-RM-v0.1` or `/mnt/models/reward_model`.
    - `sample_size`: Number of responses to sample for each step (default: 5).
    - `max_iterations`: Max number of test-time optimization iterations (default: 5).
