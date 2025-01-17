@@ -103,9 +103,9 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
    python run.py \
       --data_path data/sample.json \
       --ip $IP \
-      --reward_model meta-llama/Llama-3.1-70B-Instruct \
-      --server_model sfairXC/FsfairX-LLaMA3-RM-v0.1 \
       --port 8000 \
+      --server_model meta-llama/Llama-3.1-70B-Instruct \
+      --reward_model sfairXC/FsfairX-LLaMA3-RM-v0.1 \
       --tpo_mode tpo \
       --max_tokens_response 2048 \
       --max_tokens_all 8192 \
@@ -119,8 +119,8 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
    - `data_path`: Path to the data file (JSON). Refer to `data/sample.json` for more details.
    - `ip`: Server IP address of the vLLM server, e.g., `localhost` or `127.0.0.1`.
    - `port`: Port number for the vLLM server, e.g., `8000`.
-   - `reward_model`: Identifier or path for the reward model, e.g., `sfairXC/FsfairX-LLaMA3-RM-v0.1` or `/mnt/models/reward_model`.
    - `server_model`: Base model used for serving via an API, e.g., `allenai/Llama-3.1-Tulu-3-70B-SFT`.
+   - `reward_model`: Identifier or path for the reward model, e.g., `sfairXC/FsfairX-LLaMA3-RM-v0.1` or `/mnt/models/reward_model`.
    - `sample_size`: Number of responses to sample for each step (default: 5).
    - `max_iterations`: Max number of test-time optimization iterations (default: 5).
    - `num_threads`: Number of threads to use for generation. Increasing the `num_threads` can lead to faster generation by utilizing multiple processing cores simultaneously, thus **improving efficiency**. Set to 1 for limited computational resources.
