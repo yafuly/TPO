@@ -8,7 +8,7 @@ import concurrent.futures
 from tqdm import tqdm
 
 import textgrad as tg
-from rm import TPORewardModel
+from reward_model import TPORewardModel
 
 # Import TPO methods from test_time_training.py
 from tpo_utils import (

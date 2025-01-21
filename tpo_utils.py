@@ -1,6 +1,6 @@
 import textgrad as tg
 from textgrad.optimizer import TextualGradientDescent
-from rm import TPORewardModel
+from reward_model import TPORewardModel
 
 ############################################################
 # Prompt Templates
