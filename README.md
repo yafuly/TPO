@@ -4,12 +4,13 @@
 ![Llama-3.1-70B-SFT](https://img.shields.io/badge/Model-Llama--3--70B--SFT-green) ![Llama-3.1-70B-Instruct](https://img.shields.io/badge/Model-Llama--3--70B--Instruct-green) ![Mistral-Small-Instruct-2409](https://img.shields.io/badge/Model-Mistral--Small--Instruct--2409-green) ![AlpacaEval 2.0](https://img.shields.io/badge/Task-AlpacaEval_2.0-red
 ) ![Arena-Hard](https://img.shields.io/badge/Task-ArenaHard-red) ![HH-RLHF](https://img.shields.io/badge/Task-HH--RLHF-red) ![MATH-500](https://img.shields.io/badge/Task-MATH--500-red) ![BeaverTails-Evaluation](https://img.shields.io/badge/Task-BeaverTails--Evaluation-red) ![XSTest](https://img.shields.io/badge/Task-XSTest-red)
 
-This repository contains the official code for the paper [Test-Time Preference Optimization: On-the-Fly Alignment via Iterative Textual Feedback].
+This repository contains the official code for the paper [Test-Time Preference Optimization: On-the-Fly Alignment via Iterative Textual Feedback](https://arxiv.org/abs/2501.12895).
 <!-- (https://arxiv.org/abs/XXX). -->
 
 
 ## 🔔 News
 <!-- - **[20/01/2025]** Our paper is released on arXiv: https://arxiv.org/abs/XXX. -->
+- **[23/01/2025]** Our paper is released at [https://arxiv.org/abs/2501.12895](https://arxiv.org/abs/2501.12895).
 - **[20/01/2025]** Our code is open-source! We are working on the paper and will release it very soon.
 
 
@@ -134,8 +135,14 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
 ## 📝 Citation
 
 ```
-@article{
-
+@misc{li2025testtimepreferenceoptimizationonthefly,
+      title={Test-Time Preference Optimization: On-the-Fly Alignment via Iterative Textual Feedback}, 
+      author={Yafu Li and Xuyang Hu and Xiaoye Qu and Linjie Li and Yu Cheng},
+      year={2025},
+      eprint={2501.12895},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2501.12895}, 
 }
 ```
 
