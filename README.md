@@ -148,4 +148,14 @@ By default, the TPO framework runs in a single-machine, single-GPU environment. 
 
 ## 🌹 Acknowledgements
 
-We thank the authors of [TextGrad](https://github.com/zou-group/textgrad) for their foundational contributions to the textual feedback. We also acknowledge the use [vLLM](https://github.com/vllm-project/vllm) for generation.
+This project draws inspiration and support from several existing works:
+
+1. [TextGrad](https://github.com/zou-group/textgrad): We develop TPO atop the TextGrad framework, leveraging its ability to implement textual feedback.
+
+2. [vLLM](https://github.com/vllm-project/vllm): Our generation pipeline is built on the vLLM infrastructure.
+
+3. [RLHFlow](https://github.com/RLHFlow/RLHF-Reward-Modeling): We incorporate an off-the-shelf reward model provided by RLHFlow.
+
+4. [open-instruct](https://github.com/allenai/open-instruct): We adopt the SFT baseline from open-instruct.
+
+
