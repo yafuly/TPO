@@ -11,7 +11,7 @@ This repository contains the official code for the paper [Test-Time Preference O
 ## 🔔 News
 <!-- - **[20/01/2025]** Our paper is released on arXiv: https://arxiv.org/abs/XXX. -->
 - **[23/01/2025]** Our paper is released at [https://arxiv.org/abs/2501.12895](https://arxiv.org/abs/2501.12895).
-- **[20/01/2025]** Our code is open-source! We are working on the paper and will release it very soon.
+- **[20/01/2025]** Our code is released! We are working on the paper and will release it very soon.
 
 
 ## 👀 About TPO
