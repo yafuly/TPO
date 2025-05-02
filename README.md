@@ -9,7 +9,7 @@ This repository contains the official code for the paper [Test-Time Preference O
 
 
 ## 🔔 News
-<!-- - **[20/01/2025]** Our paper is released on arXiv: https://arxiv.org/abs/XXX. -->
+- **[01/05/2024]** Our paper has been accepted to ICML 2025! 🎉 Grateful for the hard work, insight, and collaboration of my amazing coauthors. Congrats to the whole team!
 - **[23/01/2025]** Our paper is released at [https://arxiv.org/abs/2501.12895](https://arxiv.org/abs/2501.12895).
 - **[20/01/2025]** Our code is released! We are working on the paper and will release it very soon.
 
